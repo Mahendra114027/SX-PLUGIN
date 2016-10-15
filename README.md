@@ -2,4 +2,4 @@
 This is a wordpress plugin used to popup a subscription js file .
 
 ## Screenshot
-![alt tag](icon2.png)
+![alt tag](images/icon2.png)

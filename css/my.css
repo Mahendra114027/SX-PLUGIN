@@ -1,0 +1,49 @@
+#options
+{
+	background-color: #F5F5F5;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+ 	-o-background-size: cover;
+	background-size: cover;  
+}
+#SendXDetails
+{
+	font-family: Georgia;
+	padding: 10px;
+}
+#WebSite
+{
+	padding: 5px;
+	margin-top: 10px;
+	font-style: bold;
+	font-size: 20px;
+}
+#WebSupport
+{
+	padding: 5px;
+	margin-top: 10px;
+	font-style: bold;
+	font-size: 20px;
+}
+#name
+{
+	font-size: 36px;
+	font-style: bold;
+}
+#about
+{
+	font-size: 25px;
+	font-family: Georgia;
+}
+#Support
+{
+	font-family: cursive;
+	padding: 5px;
+}
+#commit
+{
+	background-color: #4DD0E1;
+	padding: 5px;
+	margin-top: 5px;
+}
