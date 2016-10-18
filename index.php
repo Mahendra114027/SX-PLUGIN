@@ -3,10 +3,12 @@
 * Plugin Name: SendX Email Marketing
 * Description: WordPress Plugin for Various services provided by SendX 
 * Version:     1.0
-* Author:      SendX
+* Author:      Mahendra@SendX
 * Author URI:  https://in.linkedin.com/in/mahendra-singh-2961b8127
 * License:     GPL2
 */
+
+$name="";
 
 function my_plugin_menu() {
 	add_options_page( 'My Plugin Options', 'SendX', 'manage_options', 'my-unique-identifier', 'my_plugin_options' );
@@ -14,14 +16,16 @@ function my_plugin_menu() {
 
 add_action( 'admin_menu', 'my_plugin_menu' );
 
-var $account_id='55555';
+function my_plugin_options() 
+{
+	if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'Insufficient rights to access this plugin page.' ) );
+}
 
-function theme_front_page_settings()
- {
+	//global $account_id='55555';
 	?>
 		<head>
-			<script type="text/js" src="js/my.js"></script>
-			<link rel="stylesheet" type="text/css" href="css/my.css">
+			<link rel="stylesheet" type="text/css" href="plugin.css">
 		</head>
 		<body id="options">
 			<div id="SendXDetails">
@@ -30,7 +34,7 @@ function theme_front_page_settings()
 			<div>	
 				<a id="WebSite" href="http://sendx.io/" target="blank_">  Visit Us  </a>
 				<a id="WebSupport" href="http://help.sendx.io/help_center" target="blank_">  Support  </a>
-			</div><br><br>
+			</div><br>
 					SendX Account ID <input type="text" id="aid"><br><br>
 				<button id="commit">Save Changes</button>	
 			</div>	
@@ -38,21 +42,18 @@ function theme_front_page_settings()
 	<?php	
   }
 
+wp_enqueue_script('dcsnt', 'head.js#asyncload' );
 
-
-  function add_async_forscript($url)
-{
-    if (strpos($url, '#asyncload')===false)
-        return $url;
-    else if (is_admin())
-        return str_replace('#asyncload', '', $url);
-    else
-        {
-        	include( WP_DRIP_DIRNAME . "/js/append.js" );
-        	return str_replace('#asyncload', '', $url)."' async='async"; 
-        }	
-}
-add_filter('clean_url', 'add_async_forscript', 11, 1);
-
+	public function appender() {
+		// Check if the ID is set and is an integer
+		if ( ! $this->get_option( 'is_disabled' ) ) {
+			if ( $this->get_option( 'account_id' ) ) { 
+				$account_id = $this->get_option( 'account_id' );
+				include( "appender.php" );
+			} else {
+				echo '<!-- SendX: Input your account ID-->';
+			}
+		}
+	}
 
 ?>
