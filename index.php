@@ -2,7 +2,7 @@
 /**
 * Plugin Name: SendX Email Marketing
 * Description: WordPress Plugin for Various services provided by SendX 
-* Version:     1.0
+* Version:     1.0.1
 * Author:      Mahendra@SendX
 * Author URI:  https://in.linkedin.com/in/mahendra-singh-2961b8127
 * License:     GPL2
@@ -27,13 +27,14 @@ function my_plugin_options()
 		<head>
 			<link rel="stylesheet" type="text/css" href="plugin.css">
 		</head>
+		<!-- Settings Page -->
 		<body id="options">
 			<div id="SendXDetails">
 				<h1 id="name">SendX</h1>
 				<p id="about">360<sup>o</sup> Email Marketing Automation - Engage With Customers<br></p>
 			<div>	
-				<a id="WebSite" href="http://sendx.io/" target="blank_">  Visit Us  </a>
-				<a id="WebSupport" href="http://help.sendx.io/help_center" target="blank_">  Support  </a>
+				<a id="WebSite" href="http://sendx.io/" target="blank_">Visit Us</a>&nbsp
+				<a id="WebSupport" href="http://help.sendx.io/help_center" target="blank_">Support</a>
 			</div><br>
 					SendX Account ID <input type="text" id="aid"><br><br>
 				<button id="commit">Save Changes</button>	
@@ -42,18 +43,24 @@ function my_plugin_options()
 	<?php	
   }
 
+// Asynchronus call 
 wp_enqueue_script('dcsnt', 'head.js#asyncload' );
 
-	public function appender() {
-		// Check if the ID is set and is an integer
-		if ( ! $this->get_option( 'is_disabled' ) ) {
-			if ( $this->get_option( 'account_id' ) ) { 
+public function appender() 
+{
+		// Check Account ID
+		if ( ! $this->get_option( 'is_disabled' ) )
+		{
+			if ( $this->get_option( 'account_id' ) ) 
+			{ 
 				$account_id = $this->get_option( 'account_id' );
 				include( "appender.php" );
-			} else {
+			}
+			else 
+			{
 				echo '<!-- SendX: Input your account ID-->';
 			}
 		}
-	}
+}
 
 ?>

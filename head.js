@@ -1,3 +1,4 @@
+// Asynchronus loading helps in faster loading
  function add_async_forscript($url)
 {
     if (strpos($url, '#asyncload')===false)
